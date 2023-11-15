@@ -9,65 +9,66 @@ typedef struct
 	char grade[3];
 }Hun;
 
+double SumOfCredit(Hun  *a);
+double Sum(Hun *w);
+double ConvertGrade(char* c);
 int main(void)
 {
 	Hun arr[20];
-	double sumC = 0.0, sum = 0.0;
+	double sumC = 0, sum = 0;
 	for (int t = 0; t < 20; t++)
 	{
 		scanf("%s %lf %s", arr[t].name, &arr[t].credit, arr[t].grade);
-
-		if (strcmp(arr[t].grade, "A+") == 0)
-		{
-			sum += arr[t].credit * 4.5;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "A0") == 0)
-		{
-			sum += arr[t].credit * 4.0;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "B+") == 0)
-		{
-			sum += arr[t].credit * 3.5;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "B0") == 0)
-		{
-			sum += arr[t].credit * 3.0;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "C+") == 0)
-		{
-			sum += arr[t].credit * 2.5;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "C0") == 0)
-		{
-			sum += arr[t].credit * 2.0;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "D+") == 0)
-		{
-			sum += arr[t].credit * 1.5;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "D0") == 0)
-		{
-			sum += arr[t].credit * 1.0;
-			sumC += arr[t].credit;
-		}
-		else if (strcmp(arr[t].grade, "F") == 0) 
-		{
-			sum += arr[t].credit * 0.0;
-			sumC += arr[t].credit;
-		}
-		else
-			continue;
 	}
+	sumC = SumOfCredit(arr);
+	sum = Sum(arr);
+	printf("%lf\n", sum / sumC);
 
-	printf("%lf", sum / sumC);
 	return 0;
 }
 
+double SumOfCredit(Hun * a)
+{
+	double sum = 0;
 
+	for (int i = 0; i < 20; i++)
+	{	if(strcmp(a[i].grade, "P") != 0)
+			sum += a[i].credit;
+	}
+	return sum;
+}
+
+double Sum(Hun * w)
+{
+
+	double sum = 0;
+	for (int i = 0; i < 20; i++)
+	{	if(strcmp(w[i].grade, "P") != 0)
+			sum += (w[i].credit * ConvertGrade(w[i].grade));
+	}
+
+	return sum;
+}
+
+double ConvertGrade(char* c)
+{
+	
+	if (strcmp(c, "A+") == 0)
+		return 4.5;
+	else if (strcmp(c, "A0") == 0)
+		return 4.0;
+	else if (strcmp(c, "B+") == 0)
+		return 3.5;
+	else if (strcmp(c, "B0") == 0)
+		return 3.0;
+	else if (strcmp(c, "C+") == 0)
+		return 2.5;
+	else if (strcmp(c, "C0") == 0)
+		return 2.0;
+	else if (strcmp(c, "D+") == 0)
+		return 1.5;
+	else if (strcmp(c, "D0") == 0)
+		return 1.0;
+	else if (strcmp(c, "F") == 0)
+		return 0.0;
+}
