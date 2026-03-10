@@ -5,11 +5,12 @@ input = sys.stdin.readline
 sieve = [1] * 1000001
 sieve[0], sieve[1] = 0, 0
 i = 2
-while i <= 1000000 :
+# root 적용
+while i <= 1000 :
     if sieve[i] == 0 :
         i += 1
         continue 
-    t = i * i
+    t = i * i # 1을 제외한 자기 자신 이하의 배수는 다 소수가 아님
     while t <= 1000000 :
         sieve[t] = 0
         t += i
