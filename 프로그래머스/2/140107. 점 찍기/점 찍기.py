@@ -6,5 +6,5 @@ def solution(k, d):
     # 이 때 각 x마다 d^2 - a^2의 정수 부분을 k로 나눈 값에 1을 더하면
     # 원점으로부터 점이 총 몇 개 있는지 구할 수 있다.
     for a in range(0, d+1, k) :
-        answer += (int((d**2 - a**2)**(1/2)) // k) + 1
+        answer += (((d**2 - a**2)**(1/2)) // k) + 1
     return answer
